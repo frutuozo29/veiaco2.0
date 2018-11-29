@@ -6,5 +6,10 @@ namespace Veiaco.Core.Models
     {
         public long Id { get; set; }
         public DateTime DataCadastro { get; set; }
+
+        public EntidadeBase()
+        {
+
+        }
     }
 }
