@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Veiaco.CrossCutting.IoC;
 
 namespace Veiaco.WebApi
 {
@@ -30,6 +31,7 @@ namespace Veiaco.WebApi
             services.AddCors();
 
             services.AddAutoMapper();
+            RegisterServices(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,6 +48,11 @@ namespace Veiaco.WebApi
 
             app.UseHttpsRedirection();
             app.UseMvc();
+        }
+
+        private static void RegisterServices(IServiceCollection services)
+        {
+            NativeInjectorBootStrapper.RegisterServices(services);
         }
     }
 }

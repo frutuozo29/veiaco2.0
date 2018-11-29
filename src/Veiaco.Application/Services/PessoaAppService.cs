@@ -11,14 +11,16 @@ namespace Veiaco.Application.Services
     public class PessoaAppService : AppServiceBase<PessoaViewModel>, IPessoaAppService
     {
         private readonly IPessoaService pessoaService;
+        private readonly IMapper mapper;
 
-        public PessoaAppService(IPessoaService pessoaService)
+        public PessoaAppService(IMapper mapper, IPessoaService pessoaService)
         {
             this.pessoaService = pessoaService;
+            this.mapper = mapper;
         }
         public void Add(PessoaViewModel obj)
         {
-            var pessoa = Mapper.Instance.Map<PessoaViewModel, Pessoa>(obj);
+            var pessoa = mapper.Map<PessoaViewModel, Pessoa>(obj);
             pessoaService.Add(pessoa);
         }
 
@@ -28,17 +30,17 @@ namespace Veiaco.Application.Services
         }
 
         public IEnumerable<PessoaViewModel> GetAll()
-            => Mapper.Instance.Map<IEnumerable<Pessoa>, IEnumerable<PessoaViewModel>>(pessoaService.GetAll());
+            => mapper.Map<IEnumerable<Pessoa>, IEnumerable<PessoaViewModel>>(pessoaService.GetAll());
 
         public PessoaViewModel GetById(long id)
-            => Mapper.Instance.Map<Pessoa, PessoaViewModel>(pessoaService.GetById(id));
+            => mapper.Map<Pessoa, PessoaViewModel>(pessoaService.GetById(id));
 
         public void Remove(long id)
             => pessoaService.Remove(id);
 
         public void Update(PessoaViewModel obj)
         {
-            var pessoa = Mapper.Instance.Map<PessoaViewModel, Pessoa>(obj);
+            var pessoa = mapper.Map<PessoaViewModel, Pessoa>(obj);
             pessoa.Id = obj.Id;
             pessoaService.Update(pessoa);
         }

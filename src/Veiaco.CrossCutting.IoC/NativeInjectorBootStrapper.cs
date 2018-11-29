@@ -12,10 +12,9 @@ namespace Veiaco.CrossCutting.IoC
 {
     public class NativeInjectorBootStrapper
     {
-        public static void RegisterService(IServiceCollection service)
+        public static void RegisterServices(IServiceCollection service)
         {
             // Application
-            service.AddSingleton(Mapper.Configuration);
             service.AddScoped<IPessoaAppService, PessoaAppService>();
 
             // Core

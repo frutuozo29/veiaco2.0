@@ -1,3 +1,5 @@
+using AutoMapper;
+
 namespace Veiaco.Application.AutoMapper
 {
     public class AutoMapperConfig
@@ -10,6 +12,5 @@ namespace Veiaco.Application.AutoMapper
                 cfg.AddProfile(new ViewModelToDomainMappingProfile());
             });
         }
-
     }
 }
