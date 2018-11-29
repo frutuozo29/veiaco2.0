@@ -1,7 +1,7 @@
 namespace Veiaco.Application.ViewModel
 {
-    public class PessoaViewModel
+    public class PessoaViewModel : EntidadeBaseViewModel
     {
-        
+
     }
 }

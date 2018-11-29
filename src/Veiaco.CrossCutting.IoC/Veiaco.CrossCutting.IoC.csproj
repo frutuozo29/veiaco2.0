@@ -7,6 +7,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Veiaco.Core\Veiaco.Core.csproj" />
     <ProjectReference Include="..\Veiaco.Data\Veiaco.Data.csproj" />
+    <ProjectReference Include="..\Veiaco.Application\Veiaco.Application.csproj" />
   </ItemGroup>
 
   <ItemGroup>
