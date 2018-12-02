@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using System.Linq;
 using Veiaco.Core.Interfaces.Repository;
 using Veiaco.Core.Interfaces.Services;
 
@@ -18,7 +18,7 @@ namespace Veiaco.Core.Services
             repositoryBase.Add(obj);
         }
 
-        public IEnumerable<TEntity> GetAll()
+        public IQueryable<TEntity> GetAll()
         {
             return repositoryBase.GetAll();
         }

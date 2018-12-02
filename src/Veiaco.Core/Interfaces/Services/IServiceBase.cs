@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using System.Linq;
 
 namespace Veiaco.Core.Interfaces.Services
 {
@@ -6,7 +6,7 @@ namespace Veiaco.Core.Interfaces.Services
     {
         void Add(TEntity obj);
         TEntity GetById(long id);
-        IEnumerable<TEntity> GetAll();
+        IQueryable<TEntity> GetAll();
         void Update(TEntity obj);
         void Remove(long id);
     }

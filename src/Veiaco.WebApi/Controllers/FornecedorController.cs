@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Veiaco.Application.Interfaces;
 using Veiaco.Application.ViewModel;
@@ -8,21 +7,19 @@ namespace Veiaco.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PessoaController : ApiController
+    public class FornecedorController : ApiController
     {
-        private readonly IPessoaAppService pessoaAppService;
+        private readonly IFornecedorAppService fornecedorAppService;
 
-        public PessoaController(IPessoaAppService pessoaAppService)
-        {
-            this.pessoaAppService = pessoaAppService;
-        }
+        public FornecedorController(IFornecedorAppService fornecedorAppService)
+            => this.fornecedorAppService = fornecedorAppService;
 
         [HttpGet]
         public IActionResult Get()
         {
             try
             {
-                return Ok(pessoaAppService.GetAll());
+                return Ok(fornecedorAppService.GetAll());
             }
             catch (Exception e)
             {
@@ -32,11 +29,11 @@ namespace Veiaco.WebApi.Controllers
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public ActionResult<PessoaViewModel> Get(long id)
+        public ActionResult<FornecedorViewModel> Get(long id)
         {
             try
             {
-                return Ok(pessoaAppService.GetById(id));
+                return Ok(fornecedorAppService.GetById(id));
             }
             catch (Exception e)
             {
@@ -46,12 +43,12 @@ namespace Veiaco.WebApi.Controllers
 
         // POST api/values
         [HttpPost]
-        public IActionResult Post([FromBody] PessoaViewModel pessoa)
+        public IActionResult Post([FromBody] FornecedorViewModel fornecedor)
         {
             try
             {
-                pessoaAppService.Add(pessoa);
-                return Ok(pessoa);
+                fornecedorAppService.Add(fornecedor);
+                return Ok(fornecedor);
             }
             catch (Exception e)
             {
@@ -61,12 +58,12 @@ namespace Veiaco.WebApi.Controllers
 
         // PUT api/values/5
         [HttpPut("{id}")]
-        public IActionResult Put(long id, [FromBody] PessoaViewModel pessoaViewModel)
+        public IActionResult Put(long id, [FromBody] FornecedorViewModel fornecedorViewModel)
         {
             try
             {
-                pessoaViewModel.Id = id;
-                pessoaAppService.Update(pessoaViewModel);
+                fornecedorViewModel.Id = id;
+                fornecedorAppService.Update(fornecedorViewModel);
                 return Ok();
             }
             catch (Exception e)
@@ -81,7 +78,7 @@ namespace Veiaco.WebApi.Controllers
         {
             try
             {
-                pessoaAppService.Remove(id);
+                fornecedorAppService.Remove(id);
                 return Ok();
             }
             catch (Exception e)

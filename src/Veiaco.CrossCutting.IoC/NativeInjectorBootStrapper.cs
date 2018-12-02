@@ -16,11 +16,14 @@ namespace Veiaco.CrossCutting.IoC
         {
             // Application
             service.AddScoped<IPessoaAppService, PessoaAppService>();
+            service.AddScoped<IFornecedorAppService, FornecedorAppService>();
 
             // Core
             service.AddScoped<IPessoaService, PessoaService>();
+            service.AddScoped<IFornecedorService, FornecedorService>();
             // Data
             service.AddScoped<IPessoaRepository, PessoaRepository>();
+            service.AddScoped<IFornecedorRepository, FornecedorRepository>();
             service.AddScoped<VeiacoContext>();
         }
     }

@@ -9,6 +9,7 @@ namespace Veiaco.Application.AutoMapper
         public DomainToViewModelMappingProfile()
         {
             CreateMap<Pessoa, PessoaViewModel>();
+            CreateMap<Fornecedor, FornecedorViewModel>();
         }
     }
 }

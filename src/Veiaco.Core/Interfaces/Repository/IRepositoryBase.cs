@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Veiaco.Core.Interfaces.Repository
 {
@@ -6,7 +7,7 @@ namespace Veiaco.Core.Interfaces.Repository
     {
         void Add(TEntity obj);
         TEntity GetById(long id);
-        IEnumerable<TEntity> GetAll();
+        IQueryable<TEntity> GetAll();
         void Update(TEntity obj);
         void Remove(long id);
         void Dispose();

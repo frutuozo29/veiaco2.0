@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Veiaco.Data.ContextDb;
 
 namespace Veiaco.Data.Migrations
 {
     [DbContext(typeof(VeiacoContext))]
-    partial class VeiacoContextModelSnapshot : ModelSnapshot
+    [Migration("20181202220640_Fornecedor")]
+    partial class Fornecedor
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

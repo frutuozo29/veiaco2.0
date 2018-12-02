@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Veiaco.CrossCutting.IoC;
+using Veiaco.WebApi.Configurations;
 
 namespace Veiaco.WebApi
 {
@@ -30,7 +31,8 @@ namespace Veiaco.WebApi
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddCors();
 
-            services.AddAutoMapper();
+            services.AddAutoMapperSetup();
+
             RegisterServices(services);
         }
 

@@ -30,7 +30,7 @@ namespace Veiaco.Data.Repositories
             GC.SuppressFinalize(this);
         }
 
-        public IEnumerable<TEntity> GetAll() => DbSet.ToList();
+        public IQueryable<TEntity> GetAll() => DbSet;
 
         public TEntity GetById(long id) => DbSet.Find(id);
 

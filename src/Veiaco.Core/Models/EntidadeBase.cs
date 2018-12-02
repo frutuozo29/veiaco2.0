@@ -9,7 +9,7 @@ namespace Veiaco.Core.Models
 
         public EntidadeBase()
         {
-
+            DataCadastro = new DateTime().Date;
         }
     }
 }

@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using Veiaco.Application.Interfaces;
 using Veiaco.Application.ViewModel;
 using Veiaco.Core.Interfaces.Services;
@@ -19,15 +21,10 @@ namespace Veiaco.Application.Services
             this.mapper = mapper;
         }
         public void Add(PessoaViewModel obj)
-        {
-            var pessoa = mapper.Map<PessoaViewModel, Pessoa>(obj);
-            pessoaService.Add(pessoa);
-        }
+            => pessoaService.Add(mapper.Map<PessoaViewModel, Pessoa>(obj));
 
         public void Dispose()
-        {
-            GC.SuppressFinalize(this);
-        }
+            => GC.SuppressFinalize(this);
 
         public IEnumerable<PessoaViewModel> GetAll()
             => mapper.Map<IEnumerable<Pessoa>, IEnumerable<PessoaViewModel>>(pessoaService.GetAll());
