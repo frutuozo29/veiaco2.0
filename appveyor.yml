@@ -1,9 +1,0 @@
-configuration: Release
-os: Visual Studio 2017
-
-before_build:
-  - dotnet restore
-# package Web Application project for Web Deploy
-build:
-  verbosity: minimal
-  project: Veiaco2.0.sln
