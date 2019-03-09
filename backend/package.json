@@ -1,0 +1,17 @@
+{
+  "name": "veiaco-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "set NODE_ENV=development && nodemon index.js"
+  },
+  "author": "Renan Frutuozo",
+  "license": "ISC",
+  "dependencies": {
+    "mongoose": "^5.4.18",
+    "morgan": "^1.9.1",
+    "restify": "^8.1.0"
+  }
+}
