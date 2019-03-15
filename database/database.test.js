@@ -1,6 +1,6 @@
 const database = require("./database");
 
-test("Somar dois números", () => {
+test("database test", () => {
   const output = database.sum(5, 5);
   const expected = 10;
 
