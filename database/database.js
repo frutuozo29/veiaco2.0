@@ -20,12 +20,14 @@ module.exports.createConnectionMongoose = () => {
     mongoose
       .connect(stringConnectionDb, { useNewUrlParser: true })
       .then(() => {
-        console.log("Mongo is connected");
+        console.log("[DATABASE] - Mongo is connected");
         resolve(db);
       })
       .catch(err => {
-        console.log("Error on Mongo connection");
+        console.log("[DATABASE] - Error on Mongo connection");
         reject(db);
       });
   });
 };
+
+module.exports.sum = (a, b) => a + b;
