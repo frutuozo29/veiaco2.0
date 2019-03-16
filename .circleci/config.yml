@@ -10,3 +10,5 @@ jobs:
           command: |
             npm install
             npm run test
+          environment:
+            JEST_OUTPUT: "reports/jest/js-test-results.xml"
