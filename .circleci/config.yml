@@ -5,7 +5,7 @@ jobs:
       — image: circleci/node:lts
     working_directory: ~/repo
     steps:
-      — run: 
-          command: npm install
-      — run: 
-          command: npm test
+      — run:
+        command: |
+          npm install
+          npm test
