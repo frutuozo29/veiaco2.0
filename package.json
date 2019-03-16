@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "dev": "set NODE_ENV=development && nodemon index.js",
-    "test": "jest --watch"
+    "test": "jest --coverage --watchAll"
   },
   "author": "Renan Frutuozo",
   "license": "ISC",
