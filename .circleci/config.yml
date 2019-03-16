@@ -1,11 +1,11 @@
-version: 2
+version: 2.0
 jobs:
   build:
     docker:
-      — image: circleci/node:lts
-    working_directory: ~/repo
+      - image: circleci/node:lts
     steps:
-      — run:
-        command: |
-          npm install
-          npm test
+      - run:
+          name: Unit test
+          command: |
+            npm install
+            npm run test
