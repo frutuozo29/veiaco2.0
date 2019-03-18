@@ -10,3 +10,6 @@ jobs:
           command: |
             npm install
             npm run test
+      - store_artifacts:
+          path: ./coverage
+          destination: artifact-file
