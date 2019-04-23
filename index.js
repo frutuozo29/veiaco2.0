@@ -7,7 +7,7 @@ database
   .then(() => {
     var port = process.env.PORT || config.ENV.port;
     server.listen(port, () => {
-      console.log("[SERVER] - Server is running");
+      console.log(`[SERVER] - Server is running on port: ${port}`);
     });
   })
   .catch(err => {
