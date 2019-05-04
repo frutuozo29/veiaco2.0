@@ -6,25 +6,23 @@ module.exports.authenticate = async (user, password) => {
     if (user == "admin") {
       return Promise.resolve({
         _id: "bdbaeb10-9203-4e1f-93f1-ad12c32ac1bb",
-        user,
+        username: user,
         password
       });
     }
 
     let userbd = await this.readByUsername(user);
-    if (userbd) {
-      if (userbd[0].password !== password) {
-        throw "Username or password is invalid";
-      }
+    if (userbd && userbd.password !== password) {
+      throw new Error("Username or password is invalid");
     }
 
     return Promise.resolve({
       _id: userbd._id,
-      user: userbd.username,
+      username: userbd.username,
       password: userbd.password
     });
   } catch (error) {
-    throw error;
+    throw error
   }
 };
 
@@ -39,9 +37,7 @@ module.exports.create = async user => {
     });
     const response = await userModel.save();
     return response;
-  } catch (err) {
-    throw err;
-  }
+  } catch { }
 };
 
 module.exports.read = async (page, perPage) => {
@@ -53,46 +49,13 @@ module.exports.read = async (page, perPage) => {
     const count = await UserModel.count();
 
     return { users, count };
-  } catch (err) {
-    throw err;
-  }
+  } catch { }
 };
 
-module.exports.readById = async id => {
-  try {
-    const user = await UserModel.findById(id);
-    return user;
-  } catch (err) {
-    throw err;
-  }
-};
+module.exports.readById = async id => await UserModel.findOne({ _id: id });
 
-module.exports.readByUsername = async username => {
-  try {
-    let query = { username: username };
-    const user = await UserModel.find(query);
-    return user;
-  } catch (err) {
-    throw err;
-  }
-};
+module.exports.readByUsername = async username => await UserModel.findOne({ username: username });
 
-module.exports.update = async (id, user) => {
-  try {
-    let query = { _id: id };
-    const response = await UserModel.findByIdAndUpdate(query, user);
-    return response;
-  } catch (err) {
-    throw err;
-  }
-};
+module.exports.update = async (id, user) => await UserModel.findOneAndUpdate({ _id: id }, user);
 
-module.exports.del = async id => {
-  try {
-    let query = { _id: id };
-    const response = await UserModel.findByIdAndRemove(query);
-    return response;
-  } catch (err) {
-    throw err;
-  }
-};
+module.exports.del = async id => await UserModel.findOneAndRemove({ _id: id });
