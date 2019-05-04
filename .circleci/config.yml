@@ -9,7 +9,7 @@ jobs:
           name: Unit test
           command: |
             npm install
-            npm run test
+            npm run coverage
       - store_artifacts:
           path: ./coverage
           destination: artifact-file
