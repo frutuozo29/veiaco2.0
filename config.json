@@ -2,9 +2,9 @@
   "database": {
     "host": "localhost",
     "port": 27017,
-    "name": "veiaco_app"
+    "name": "veiaco_db"
   },
   "ENV": {
-    "port": 1000
+    "port": 9000
   }
 }

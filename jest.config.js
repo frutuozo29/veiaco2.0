@@ -1,6 +1,6 @@
 module.exports = {
-  testEnvironment: "node",
-  reporters: ["default"],
+  testEnvironment: 'node',
+  reporters: ['default'],
   coverageThreshold: {
     global: {
       branches: 80,
@@ -10,9 +10,9 @@ module.exports = {
     }
   },
   coveragePathIgnorePatterns: [
-    "<rootDir>/node_modules/",
-    "<rootDir>/coverage/",
-    "<rootDir>/database/",
-    "<rootDir>/routes/"
+    '<rootDir>/node_modules/',
+    '<rootDir>/coverage/',
+    '<rootDir>/database/',
+    '<rootDir>/routes/'
   ]
-};
+}

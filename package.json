@@ -12,14 +12,13 @@
   "author": "Renan Frutuozo",
   "license": "ISC",
   "dependencies": {
-    "mongoose": "^5.4.20",
-    "morgan": "^1.9.1",
-    "restify": "^8.2.0",
-    "restify-cors-middleware": "^1.1.1"
+    "apollo-server": "^2.8.1",
+    "graphql": "^14.4.2",
+    "mongoose": "^5.4.20"
   },
   "engines": {
-    "node": "10.9.0",
-    "npm": "6.2.0"
+    "node": "10.16.2",
+    "npm": "6.9.0"
   },
   "devDependencies": {
     "jest": "^24.5.0",
