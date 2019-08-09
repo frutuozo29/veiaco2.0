@@ -11,11 +11,9 @@ module.exports.createConnectionMongoose = () => {
     mongoose.Promise = global.Promise
     const stringConnectionDb =
       process.env.NODE_ENV === 'production'
-        ? `mongodb+srv://${process.env.USER_MONGO}:${
-        process.env.PASSWORD_MONGO
-        }@veiacocluster-l9d2t.mongodb.net/test?retryWrites=true&w=majority`
+        ? process.env.DATABASE
         : `mongodb://${config.database.host}:${config.database.port}/${
-        config.database.name
+          config.database.name
         }`
     mongoose
       .connect(stringConnectionDb, { useNewUrlParser: true })
