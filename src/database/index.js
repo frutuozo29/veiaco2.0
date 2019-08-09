@@ -13,7 +13,7 @@ module.exports.createConnectionMongoose = () => {
       process.env.NODE_ENV === 'production'
         ? `mongodb+srv://${process.env.USER_MONGO}:${
           process.env.PASSWORD_MONGO
-        }@veiacocluster-l9d2t.mongodb.net/veiaco-db?retryWrites=true&w=majority`
+        }@veiacocluster-l9d2t.mongodb.net/veiaco?retryWrites=true&w=majority`
         : `mongodb://${config.database.host}:${config.database.port}/${
           config.database.name
         }`
