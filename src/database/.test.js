@@ -1,4 +1,4 @@
-const database = require('./database')
+const database = require('../database')
 
 describe('Database test', () => {
   test('database test', () => {
