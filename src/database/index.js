@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-const config = require('../../config.json')
 
 var db
 
@@ -9,14 +8,9 @@ module.exports.createConnectionMongoose = () => {
       return db
     }
     mongoose.Promise = global.Promise
-    const stringConnectionDb =
-      process.env.NODE_ENV === 'production'
-        ? process.env.DATABASE
-        : `mongodb://${config.database.host}:${config.database.port}/${
-          config.database.name
-        }`
+
     mongoose
-      .connect(stringConnectionDb, { useNewUrlParser: true })
+      .connect(process.env.DATABASE, { useNewUrlParser: true })
       .then(() => {
         console.log('[DATABASE] - Mongo is connected')
         resolve(db)
@@ -27,5 +21,3 @@ module.exports.createConnectionMongoose = () => {
       })
   })
 }
-
-module.exports.sum = (a, b) => a + b
