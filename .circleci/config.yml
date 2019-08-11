@@ -6,6 +6,15 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Build api
+          command: npm install
+
+  test:
+    docker:
+      - image: circleci/node:lts
+    steps:
+      - checkout
+      - run:
           name: Unit test
           command: |
             npm install
