@@ -7,16 +7,13 @@ jobs:
       - checkout
 
       - run:
-          name: Build api
-          command: npm install
+        name: Build api
+        command: npm install
 
       - run:
-          name: Unit test
-          command: npm run coverage
-        - store_artifacts:
-            path: ./coverage
-            destination: artifact-file
-
+        name: Unit test
+        command: npm run coverage
+      
       - run:
         name: Build Docker image
         command: docker build -t frutuozo29/veiaco-api
@@ -28,8 +25,8 @@ jobs:
           docker push frutuozo29/veiaco-api
       
       - run:
-          name: Deploy to heroku
-          command: |
-            docker login --username=$HEROKU_LOGIN --password=$HEROKU_API_KEY registry.heroko.com
-            docker tag frutuozo29/veiaco-api registry.heroku.com/$HEROKU_APP_NAME/web
-            docker push registry.heroku.com/$HEROKU_APP_NAME/web
+        name: Deploy to heroku
+        command: |
+          docker login --username=$HEROKU_LOGIN --password=$HEROKU_API_KEY registry.heroko.com
+          docker tag frutuozo29/veiaco-api registry.heroku.com/$HEROKU_APP_NAME/web
+          docker push registry.heroku.com/$HEROKU_APP_NAME/web
