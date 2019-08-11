@@ -12,7 +12,7 @@ module.exports.createConnectionMongoose = () => {
     mongoose
       .connect(process.env.DATABASE, { useNewUrlParser: true })
       .then(() => {
-        console.log('[DATABASE] - Mongo is connected')
+        console.log('[DATABASE MONGO] - Mongo is connected')
         resolve(db)
       })
       .catch(err => {
