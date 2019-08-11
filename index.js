@@ -6,7 +6,7 @@ database
   .createConnectionMongoose()
   .then(() => {
     server.listen(process.env.PORT, () => {
-      console.log(`[SERVER] - Server is running on port: ${process.env.PORT}`)
+      console.log(`[SERVER - HEROKU] - Server is running on port: ${process.env.PORT}`)
     })
   })
   .catch(err => {

@@ -23,9 +23,25 @@ jobs:
           path: ./coverage
           destination: artifact-file
 
+  deploy:
+    docker:
+      - image: circleci/node:lts
+    steps:
+      - checkout
+      - run:
+          name: Deploy heroku
+          command: |
+            npm install
+            npm install -g heroku
+            docker build -t veiaco-api .
+            docker tag veiaco-api registry.heroku.com/veiaco-api/web
+            heroku container:login
+            docker push registry.heroku.com/veiaco-api/web
+
 workflows:
   version: 2
-  build_and_test:
+  pipeline-master:
     jobs:
       - build
       - test
+      - deploy
