@@ -16,7 +16,7 @@ jobs:
       
       - run:
           name: Build Docker image
-          command: docker build -t frutuozo29/veiaco-api
+          command: docker build -t frutuozo29/veiaco-api .
       
       - run:
           name: Push to DockerHub
