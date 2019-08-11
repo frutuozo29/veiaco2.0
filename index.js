@@ -5,9 +5,8 @@ const server = require('./src/server')
 database
   .createConnectionMongoose()
   .then(() => {
-    var port = process.env.PORT
-    server.listen(port, () => {
-      console.log(`[SERVER] - Server is running on port: ${port}`)
+    server.listen(process.env.PORT, () => {
+      console.log(`[SERVER] - Server is running on port: ${process.env.PORT}`)
     })
   })
   .catch(err => {
