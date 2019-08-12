@@ -30,3 +30,5 @@ jobs:
             docker login --username=$HEROKU_LOGIN --password=$HEROKU_API_KEY registry.heroku.com
             docker tag frutuozo29/veiaco-api:$CIRCLE_SHA1 registry.heroku.com/$HEROKU_APP_NAME/web
             docker push registry.heroku.com/$HEROKU_APP_NAME/web
+            curl https://cli-assets.heroku.com/install.sh | sh
+            heroku container:release web -a $HEROKU_APP_NAME
