@@ -1,5 +1,7 @@
 const { gql } = require('apollo-server')
 
+const userSchema = require('./user')
+
 const linkSchema = gql`
   type Query {
     _: Boolean
@@ -9,4 +11,4 @@ const linkSchema = gql`
   }
 `
 
-module.exports = [linkSchema]
+module.exports = [linkSchema, userSchema]
