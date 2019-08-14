@@ -1,8 +1,7 @@
 version: 2.0
 jobs:
   build:
-    docker:
-      - image: docker
+    machine: true
 
     steps:
       - checkout
