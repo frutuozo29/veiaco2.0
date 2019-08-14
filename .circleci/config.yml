@@ -6,14 +6,6 @@ jobs:
 
     steps:
       - checkout
-
-      - run:
-          name: Build api
-          command: npm install
-
-      - run:
-          name: Unit test
-          command: npm run coverage
       
       - run:
           name: Build Docker image
