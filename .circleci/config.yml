@@ -1,19 +1,18 @@
 version: 2.0
 jobs:
   build:
-    docker:
-      - image: yarnpkg/node-yarn
-    
+    machine: true
+
     steps:
       - checkout
 
       - run:
           name: Build api
-          command: yarn install
+          command: npm install
 
       - run:
           name: Unit test
-          command: yarn coverage
+          command: npm run coverage
       
       - run:
           name: Build Docker image
@@ -31,5 +30,3 @@ jobs:
             docker login --username=$HEROKU_LOGIN --password=$HEROKU_API_KEY registry.heroku.com
             docker tag frutuozo29/veiaco-api:$CIRCLE_SHA1 registry.heroku.com/$HEROKU_APP_NAME/web
             docker push registry.heroku.com/$HEROKU_APP_NAME/web
-            curl https://cli-assets.heroku.com/install.sh | sh
-            heroku container:release web -a $HEROKU_APP_NAME
