@@ -8,11 +8,11 @@ jobs:
 
       - run:
           name: Build api
-          command: npm install
+          command: yarn install
 
       - run:
           name: Unit test
-          command: npm run coverage
+          command: yarn coverage
       
       - run:
           name: Build Docker image
