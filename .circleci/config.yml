@@ -3,8 +3,7 @@ jobs:
   build:
     docker:
       - image: yarnpkg/node-yarn
-    machine: true
-
+    
     steps:
       - checkout
 
