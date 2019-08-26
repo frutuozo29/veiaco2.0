@@ -13,7 +13,7 @@ const userSchema = gql`
   type User {
     _id: String!
     name: String!
-    email: String!
+    email: String
     username: String!
     password: String!
   }

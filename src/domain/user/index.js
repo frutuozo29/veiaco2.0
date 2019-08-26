@@ -34,3 +34,5 @@ module.exports.login = async (username, password) => {
     { expiresIn: '1d' }
   )
 }
+
+module.exports.findAll = async () => UserModel.find({})
