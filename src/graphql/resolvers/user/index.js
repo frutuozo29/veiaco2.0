@@ -8,8 +8,8 @@ module.exports = {
   },
 
   Mutation: {
-    signup (_, { userInput }) {
-      return userDomain.signup(userInput)
+    signup (_, { input }) {
+      return userDomain.signup(input)
     },
 
     login (_, { username, password }) {
