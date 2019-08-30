@@ -3,13 +3,13 @@ const UserModel = require('../../models/user')
 const bcrypt = require('bcrypt')
 const jsonwebtoken = require('jsonwebtoken')
 
-module.exports.signup = async (userInput) => {
+module.exports.signup = async (input) => {
   const user = await UserModel.create({
     _id: new mongoose.Types.ObjectId(),
-    name: userInput.name,
-    email: userInput.email,
-    username: userInput.username,
-    password: await bcrypt.hash(userInput.password, 10)
+    name: input.name,
+    email: input.email,
+    username: input.username,
+    password: await bcrypt.hash(input.password, 10)
   })
 
   return jsonwebtoken.sign({ _id: user._id, username: user.username }, process.env.JWT_SECRET, { expiresIn: '1d' })
