@@ -28,11 +28,13 @@ module.exports.login = async (username, password) => {
     throw new Error('Incorrect password')
   }
 
-  return jsonwebtoken.sign(
+  const token = jsonwebtoken.sign(
     { id: user.id, email: user.email },
     process.env.JWT_SECRET,
     { expiresIn: '1d' }
   )
+
+  return { token, user: { name: user.name, email: user.email, username: user.username } }
 }
 
 module.exports.findAll = async () => UserModel.find({})
