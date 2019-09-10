@@ -12,7 +12,13 @@ module.exports.signup = async (input) => {
     password: await bcrypt.hash(input.password, 10)
   })
 
-  return jsonwebtoken.sign({ _id: user._id, username: user.username }, process.env.JWT_SECRET, { expiresIn: '1d' })
+  const token = jsonwebtoken.sign(
+    { _id: user._id, username: user.username },
+    process.env.JWT_SECRET,
+    { expiresIn: '1d' }
+  )
+
+  return { token, user: user.map(({ name, email, username }) => ({ name, email, username })) }
 }
 
 module.exports.login = async (username, password) => {
@@ -35,6 +41,15 @@ module.exports.login = async (username, password) => {
   )
 
   return { token, user: { name: user.name, email: user.email, username: user.username } }
+}
+
+module.exports.checkToken = (token) => {
+  jsonwebtoken.verify(token, process.env.JWT_SECRET, async (error, payload) => {
+    if (error) throw new Error('Invalid token')
+
+    console.log(payload)
+    return payload
+  })
 }
 
 module.exports.findAll = async () => UserModel.find({})

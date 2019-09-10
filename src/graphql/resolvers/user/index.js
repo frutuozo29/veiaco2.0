@@ -14,6 +14,9 @@ module.exports = {
 
     login (_, { username, password }) {
       return userDomain.login(username, password)
+    },
+    checkToken (_, { token }) {
+      return userDomain.checkToken(token)
     }
   }
 }

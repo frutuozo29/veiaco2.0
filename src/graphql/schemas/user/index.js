@@ -7,8 +7,9 @@ const userSchema = gql`
   }
   
   extend type Mutation {
-    signup(input: InputUser!): String
+    signup(input: InputUser!): LoginResponse!
     login (username: String!, password: String!): LoginResponse!
+    checkToken(token: String!): LoginResponse!
   }
 
   type User {
