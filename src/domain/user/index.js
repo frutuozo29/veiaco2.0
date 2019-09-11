@@ -13,12 +13,12 @@ module.exports.signup = async (input) => {
   })
 
   const token = jsonwebtoken.sign(
-    { _id: user._id, username: user.username },
+    { name: user.name, email: user.email, username: user.username },
     process.env.JWT_SECRET,
     { expiresIn: '1d' }
   )
 
-  return { token, user: user.map(({ name, email, username }) => ({ name, email, username })) }
+  return { token, user: { name: user.name, email: user.email, username: user.username } }
 }
 
 module.exports.login = async (username, password) => {
@@ -35,7 +35,7 @@ module.exports.login = async (username, password) => {
   }
 
   const token = jsonwebtoken.sign(
-    { id: user.id, email: user.email },
+    { name: user.name, email: user.email, username: user.username },
     process.env.JWT_SECRET,
     { expiresIn: '1d' }
   )
@@ -43,13 +43,10 @@ module.exports.login = async (username, password) => {
   return { token, user: { name: user.name, email: user.email, username: user.username } }
 }
 
-module.exports.checkToken = (token) => {
-  jsonwebtoken.verify(token, process.env.JWT_SECRET, async (error, payload) => {
-    if (error) throw new Error('Invalid token')
+module.exports.checkToken = async (token) => jsonwebtoken.verify(token, process.env.JWT_SECRET, (error, payload) => {
+  if (error) throw new Error('Invalid token')
 
-    console.log(payload)
-    return payload
-  })
-}
+  return { token, user: { name: payload.name, email: payload.email, username: payload.username } }
+})
 
 module.exports.findAll = async () => UserModel.find({})

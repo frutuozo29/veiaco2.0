@@ -4,6 +4,7 @@ const Schema = mongoose.Schema
 const schema = new Schema({
   _id: mongoose.Types.ObjectId,
   name: String,
+  email: String,
   username: String,
   password: String
 })
