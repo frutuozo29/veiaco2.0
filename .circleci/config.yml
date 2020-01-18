@@ -1,26 +1,16 @@
 version: 2.0
 jobs:
   build:
-    machine: true
-
+    docker:
+      - image: circleci/node:lts
     steps:
       - checkout
-      
       - run:
-          name: Build Docker image
-          command: docker build -t frutuozo29/veiaco-api:$CIRCLE_SHA1 .
-      
+          name: Build
+          command: yarn
+      - store_artifacts:
+          path: ./coverage
+          destination: artifact-file
       - run:
-          name: Push to DockerHub
-          command: |
-            docker login -u $DOCKERHUB_LOGIN -p $DOCKERHUB_PASSWORD
-            docker push frutuozo29/veiaco-api:$CIRCLE_SHA1
-      
-      - run:
-          name: Deploy to heroku
-          command: |
-            docker login --username=$HEROKU_LOGIN --password=$HEROKU_API_KEY registry.heroku.com
-            docker tag frutuozo29/veiaco-api:$CIRCLE_SHA1 registry.heroku.com/$HEROKU_APP_NAME/web
-            docker push registry.heroku.com/$HEROKU_APP_NAME/web
-            curl https://cli-assets.heroku.com/install.sh | sh
-            heroku container:release web -a $HEROKU_APP_NAME
+          name: coverage
+          command: yarn coverage && cat ./coverage/lcov.info | node_modules/.bin/coveralls --verbose   

@@ -3,16 +3,17 @@ module.exports = {
   reporters: ['default'],
   coverageThreshold: {
     global: {
-      branches: 0,
-      functions: 0,
-      lines: 0,
-      statements: 0
+      statements: 80,
+      branches: 30,
+      functions: 80,
+      lines: 80,
     }
   },
-  coveragePathIgnorePatterns: [
-    '<rootDir>/node_modules/',
-    '<rootDir>/coverage/',
-    '<rootDir>/database/',
-    '<rootDir>/routes/'
+  collectCoverageFrom: [
+    "!**/graphql/**",
+    "!**/server/**",
+    "!**/database/**",
+    "!node_modules/",
+    "src/**/*.js"
   ]
 }

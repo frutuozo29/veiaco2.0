@@ -31,7 +31,7 @@ module.exports.login = async (username, password) => {
   const valid = await bcrypt.compare(password, user.password)
 
   if (!valid) {
-    throw new Error('Incorrect password')
+    throw Error('Incorrect password')
   }
 
   const token = jsonwebtoken.sign(
