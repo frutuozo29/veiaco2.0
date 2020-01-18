@@ -7,7 +7,7 @@ Api do Frontend Veiaco App, utilizando apollo-server, graphql, jwt e mongodb
 
 ## Como rodar
 
-> Antes de rodar é necessário renomear o arquivo *.env.exemple* para *.env* e informar as variáveis de ambiente.
+> Antes de rodar é necessário renomear o arquivo **.env.exemple** para **.env** e informar as variáveis de ambiente.
 
 ```bash
 cd veiaco-api
