@@ -10,7 +10,7 @@ module.exports.createConnectionMongoose = () => {
     mongoose.Promise = global.Promise
 
     mongoose
-      .connect(process.env.DATABASE, { useNewUrlParser: true })
+      .connect(process.env.DATABASE, { useNewUrlParser: true, useFindAndModify: false })
       .then(() => {
         console.log('[DATABASE] - Mongo is connected')
         resolve(db)
