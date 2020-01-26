@@ -1,37 +1,45 @@
-const formPaymentDomain = require('../formPayment')
-const formPaymentModel = require('../../models/formPayment')
+const categoryDomain = require('../category')
+const categoryModel = require('../../models/category')
 const mockingoose = require('mockingoose').default
 
 
-describe('FormPayment domain tests', () => {
+describe('Category domain tests', () => {
 
   beforeEach(() => {
     mockingoose.resetAll()
   })
 
-  test('formPayment create test', async () => {
+  test('Category create test', async () => {
     const input = {
-      name: 'cartao de credito',
-      typePayment: 'C'
+      description: "Lazer",
+      subCategories: [
+        { description: "Cinema", typeValue: "D" },
+        { description: "Show", typeValue: "D" },
+        { description: "Praia", typeValue: "D" }
+      ]
     }
 
-    mockingoose(formPaymentModel).toReturn({ input, _id: 'hastoken' }, 'create')
+    mockingoose(categoryModel).toReturn({ input, _id: 'hastoken' }, 'create')
 
-    const response = await formPaymentDomain.create(input)
+    const response = await categoryDomain.create(input)
     const responseParsed = JSON.parse(JSON.stringify(response))
 
     expect(responseParsed).toEqual({ _id: responseParsed._id, ...input })
   })
 
-  test('formPayment findAll test', async () => {
+  test('Category findAll test', async () => {
     const input = [{
-      name: 'cartao de credito',
-      typePayment: 'C'
+      description: "Lazer",
+      subCategories: [
+        { description: "Cinema", typeValue: "D" },
+        { description: "Show", typeValue: "D" },
+        { description: "Praia", typeValue: "D" }
+      ]
     }]
 
-    mockingoose(formPaymentModel).toReturn(input, 'find')
+    mockingoose(categoryModel).toReturn(input, 'find')
 
-    const response = await formPaymentDomain.findAll()
+    const response = await categoryDomain.findAll()
     const responseParsed = JSON.parse(JSON.stringify(response))
 
     expect(input).toEqual(responseParsed)
