@@ -11,29 +11,31 @@ const userSchema = gql`
   }
 
   input SubCategoriesInput {
+    _id: String
     description: String!,
     typeValue: String!
   }
 
   type SubCategories {
+    _id: String!,
     description: String!,
     typeValue: String!
   }
 
   type Category {
     _id: String!
-    description: String!
+    name: String!
     subCategories: [SubCategories]
   }
 
   input CategoryInput {
-    description: String!
+    name: String!
     subCategories: [SubCategoriesInput]
   }
 
   input CategoryUpdateInput {
     _id: String!
-    description: String!
+    name: String!
     subCategories: [SubCategoriesInput]
   }
 `
