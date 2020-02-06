@@ -8,4 +8,10 @@ module.exports.create = async ({ name, subCategories }) => CategoryModel.create(
 
 module.exports.update = async (input) => CategoryModel.findByIdAndUpdate({ _id: input._id }, input)
 
-module.exports.findAll = async () => CategoryModel.find({})
+module.exports.find = async (id) => {
+  if (!!id) {
+    return CategoryModel.find({ _id: id })
+  }
+
+  return CategoryModel.find({})
+}
