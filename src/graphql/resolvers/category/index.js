@@ -3,7 +3,7 @@ const categoryDomain = require('../../../domain/category')
 module.exports = {
   Query: {
     categories() {
-      return categoryDomain.findAll()
+      return categoryDomain.find()
     }
   },
 
