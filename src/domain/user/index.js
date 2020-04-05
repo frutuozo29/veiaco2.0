@@ -4,6 +4,12 @@ const bcrypt = require('bcrypt')
 const jsonwebtoken = require('jsonwebtoken')
 
 module.exports.signup = async (input) => {
+  const isRegistered = await UserModel.find({email: input.email}).countDocuments() > 1
+
+  if (isRegistered) {
+    throw new Error('A registered user with email already exists')
+  }
+
   const user = await UserModel.create({
     _id: new mongoose.Types.ObjectId(),
     name: input.name,
